@@ -7,6 +7,17 @@ const TagSchema = new Schema(
       required: true,
     },
   },
+  {
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
+  }
 );
+
+// populate para obtener los posts asociados a un tag 
+TagSchema.virtual('posts', {
+  ref: 'Post',
+  localField: '_id',
+  foreignField: 'tags',
+});
 
 export const TagModel = model("Tag", TagSchema);

@@ -1,4 +1,5 @@
-import { model, Schema} from "mongoose";
+import { model, Schema } from "mongoose";
+import { ProfileSchema } from "./profile.model.js";
 
 const UserSchema = new Schema(
   {
@@ -16,7 +17,23 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
+    // relacion embebida 1 a 1 
+    profile: {
+      type: ProfileSchema,
+      required: false,
+    },
+  },
+  {
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
   }
 );
+
+// uso del populate para obtener los posts de un user 
+UserSchema.virtual('posts', {
+  ref: 'Post',
+  localField: '_id',
+  foreignField: 'author',
+});
 
 export const UserModel = model("User", UserSchema);

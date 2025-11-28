@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-const profileSchema = new Schema(
+export const ProfileSchema = new Schema(
   {
     first_name: {
       type: String,
@@ -12,5 +12,3 @@ const profileSchema = new Schema(
     },
   }
 );
-
-export const ProfileModel = model("Profile", profileSchema);
