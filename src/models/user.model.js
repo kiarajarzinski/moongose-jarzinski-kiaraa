@@ -22,6 +22,9 @@ const UserSchema = new Schema(
       type: ProfileSchema,
       required: false,
     },
+    // eliminacion logica 
+    isDeleted: { type: Boolean,
+    default: false },
   },
   {
     toObject: { virtuals: true },

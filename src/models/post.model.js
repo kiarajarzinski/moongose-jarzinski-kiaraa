@@ -23,6 +23,8 @@ const postSchema = new Schema(
         ref: "Tag",
       },
     ],
+    // eliminacion logica
+    isDeleted: { type: Boolean, default: false },
 });
     
 

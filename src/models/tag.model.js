@@ -20,4 +20,7 @@ TagSchema.virtual('posts', {
   foreignField: 'tags',
 });
 
+// eliminacion logica 
+TagSchema.add({ isDeleted: { type: Boolean, default: false } });
+
 export const TagModel = model("Tag", TagSchema);
